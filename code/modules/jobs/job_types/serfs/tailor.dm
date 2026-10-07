@@ -5,9 +5,14 @@
 	)
 	raw_attribute_list = list(
 		STAT_INTELLIGENCE = 2,
-		STAT_SPEED = 1,
-		STAT_PERCEPTION = 1,
+		STAT_SPEED = 2,
+		STAT_PERCEPTION = 2,
 		STAT_STRENGTH = -1,
+		/datum/attribute/skill/combat/wrestling = 20,
+		/datum/attribute/skill/combat/unarmed = 10,
+		/datum/attribute/skill/misc/swimming = 10,
+		/datum/attribute/skill/misc/climbing = 20,
+		/datum/attribute/skill/misc/athletics = 10,
 		/datum/attribute/skill/misc/sewing = 30,
 		/datum/attribute/skill/craft/tanning = 20,
 		/datum/attribute/skill/craft/crafting = 30,
@@ -24,21 +29,23 @@
 /datum/job/tailor
 	title = JOB_TAILOR
 	f_title = "Seamstress"
+	alt_titles = list("Dressmaker", "Clothier", "Sewist", "Couturier", "Outfitter")
 	tutorial = "Cloth, linen, silk and leather. \
 	You've tirelessly studied and poured your life into \
 	sewing articles of protection, padding, and fashion for serf and noble alike."
 	department_flag = SERFS
 	job_flags = (JOB_ANNOUNCE_ARRIVAL | JOB_SHOW_IN_CREDITS | JOB_EQUIP_RANK | JOB_NEW_PLAYER_JOINABLE)
 	display_order = JDO_TAILOR
-	faction = FACTION_TOWN
+	factions = list(FACTION_TOWN)
 	total_positions = 1
 	spawn_positions = 1
-	bypass_lastclass = TRUE
 
 	allowed_races = RACES_PLAYER_ALL
 
 	outfit = /datum/outfit/tailor
 	give_bank_account = 25
+	knows_the_town = TRUE
+	known_by_the_town = TRUE
 	cmode_music = 'sound/music/cmode/towner/CombatTowner2.ogg'
 
 	job_bitflag = BITFLAG_CONSTRUCTOR

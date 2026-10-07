@@ -998,7 +998,7 @@
 	dir = 1
 	},
 /obj/effect/mapping_helpers/access/locker,
-/obj/effect/mapping_helpers/access/keyset/garrison/forest,
+/obj/effect/mapping_helpers/access/keyset/gallowband/general,
 /turf/open/floor/metal/alt,
 /area/indoors/town/cell)
 "kf" = (
@@ -1100,7 +1100,7 @@
 	dir = 8
 	},
 /obj/effect/mapping_helpers/access/locker,
-/obj/effect/mapping_helpers/access/keyset/garrison/forest,
+/obj/effect/mapping_helpers/access/keyset/gallowband/general,
 /turf/open/floor/metal/alt,
 /area/indoors/town/cell)
 "la" = (
@@ -1345,7 +1345,7 @@
 /area/outdoors/bog)
 "nh" = (
 /obj/effect/mapping_helpers/access/locker,
-/obj/effect/mapping_helpers/access/keyset/garrison/forest,
+/obj/effect/mapping_helpers/access/keyset/gallowband/general,
 /obj/structure/door/green{
 	name = "Salem Garrison"
 	},
@@ -2167,7 +2167,7 @@
 	name = "forrest warden bedroom"
 	},
 /obj/effect/mapping_helpers/access/locker,
-/obj/effect/mapping_helpers/access/keyset/garrison/forest,
+/obj/effect/mapping_helpers/access/keyset/gallowband/general,
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/villagegarrison)
 "xp" = (
@@ -3172,7 +3172,7 @@
 	name = "Salem Garrison"
 	},
 /obj/effect/mapping_helpers/access/locker,
-/obj/effect/mapping_helpers/access/keyset/garrison/forest,
+/obj/effect/mapping_helpers/access/keyset/gallowband/general,
 /turf/open/floor/hexstone,
 /area/indoors/villagegarrison)
 "Ii" = (
@@ -3245,7 +3245,7 @@
 	name = "forrest garrison barracks"
 	},
 /obj/effect/mapping_helpers/access/locker,
-/obj/effect/mapping_helpers/access/keyset/garrison/forest,
+/obj/effect/mapping_helpers/access/keyset/gallowband/general,
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/villagegarrison)
 "IP" = (
@@ -3407,6 +3407,10 @@
 "KZ" = (
 /turf/open/floor/cobblerock,
 /area/under/mountains/anvil/upper)
+"La" = (
+/obj/effect/spawner/traveltile_spawner/horizontal/inhumen,
+/turf/open/floor/cobblerock,
+/area/outdoors/bog)
 "Lb" = (
 /obj/structure/fluff/walldeco/bigpainting,
 /obj/structure/table/wood/plain,
@@ -3644,7 +3648,7 @@
 /turf/open/floor/naturalstone,
 /area/under/mountains/anvil/lower)
 "MX" = (
-/obj/structure/closet/crate/crafted_closet/crafted,
+/obj/structure/closet/crate/crafted_closet,
 /turf/open/floor/twig,
 /area/indoors)
 "MZ" = (
@@ -4834,7 +4838,7 @@
 /turf/open/floor/cobble,
 /area/under/mountains/anvil/lower)
 "Zy" = (
-/obj/structure/closet/crate/crafted_closet/crafted,
+/obj/structure/closet/crate/crafted_closet,
 /turf/open/floor/woodturned/nosmooth,
 /area/indoors)
 "Zz" = (
@@ -67685,7 +67689,7 @@ SK
 "}
 (112,1,2) = {"
 SK
-fl
+La
 mp
 mp
 mp

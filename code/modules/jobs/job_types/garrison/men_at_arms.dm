@@ -10,18 +10,22 @@
 	department_flag = GARRISON
 	job_flags = (JOB_ANNOUNCE_ARRIVAL | JOB_SHOW_IN_CREDITS | JOB_EQUIP_RANK | JOB_NEW_PLAYER_JOINABLE)
 	display_order = JDO_MENATARMS
-	faction = FACTION_TOWN
+	factions = list(FACTION_TOWN, SUB_FACTION_KEEP)
 	total_positions = 4
 	spawn_positions = 4
-	bypass_lastclass = TRUE
 
 	allowed_races = RACES_PLAYER_NO_KOBOLD
-	blacklisted_species = list(SPEC_ID_HALFLING)
+	blacklisted_species = list(SPEC_ID_HALFLING, SPEC_ID_HALF_SNOW_ELF, SPEC_ID_SNOW_ELF)
 
 	outfit = /datum/outfit/watchman
 	advclass_cat_rolls = list(CTAG_MENATARMS = 20)
 	cmode_music = 'sound/music/cmode/garrison/CombatManAtArms.ogg'
 	give_bank_account = 30
+	knows_the_town = TRUE
+	known_by_the_town = TRUE
+	jobs_i_always_know = KNOW_COURT_LIST
+	jobs_always_know_me = KNOW_COURT_AGENT_LIST
+	starting_wage = 30
 
 	job_bitflag = BITFLAG_GARRISON
 
@@ -36,19 +40,27 @@
 
 /datum/outfit/watchman
 	name = "Men-at-arms Base"
-	head = /obj/item/clothing/head/helmet/kettle/slit/atarms
 	cloak = /obj/item/clothing/cloak/stabard/guard
-	shirt = /obj/item/clothing/armor/gambeson/arming
 	neck = /obj/item/clothing/neck/bevor
-	gloves = /obj/item/clothing/gloves/leather
+	gloves = /obj/item/clothing/gloves/leather/advanced
 	wrists = /obj/item/clothing/wrists/bracers/leather
-	pants = /obj/item/clothing/pants/trou/leather/guard
-	shoes = /obj/item/clothing/shoes/boots
+	pants = /obj/item/clothing/pants/trou/leather/splint
+	shoes = /obj/item/clothing/shoes/boots/leather/advanced/watch
 	belt = /obj/item/storage/belt/leather
 	beltl = /obj/item/storage/keyring/manorguard
-	backpack_contents = list(
-		/obj/item/weapon/knife/dagger/steel/special = 1
+
+/datum/job/men_at_arms/on_roundstart(mob/living/spawned, client/player_client)
+	. = ..()
+
+	var/static/list/selectablehelmets = list(
+		"Royal Slitted Kettle Helmet" = /obj/item/clothing/head/helmet/kettle/slit/atarms,
+		"Slitted Kettle Helmet" = /obj/item/clothing/head/helmet/kettle/slit,
+		"Kettle Helmet"	= /obj/item/clothing/head/helmet/kettle,
+		"Steel Sallet" = /obj/item/clothing/head/helmet/sallet,
+		"Nasal Helmet" = /obj/item/clothing/head/helmet/nasal,
 	)
+
+	spawned.select_equippable(player_client, selectablehelmets, message = "Choose Your Helmet", title = JOB_MAN_AT_ARMS)
 
 /datum/outfit/watchman/post_equip(mob/living/carbon/human/H, visuals_only = FALSE)
 	. = ..()
@@ -58,6 +70,7 @@
 /datum/job/advclass/menatarms
 	exp_type = list(EXP_TYPE_GARRISON, EXP_TYPE_COMBAT)
 	exp_types_granted = list(EXP_TYPE_GARRISON, EXP_TYPE_COMBAT)
+	factions = list(FACTION_TOWN, SUB_FACTION_KEEP)
 
 /datum/attribute_holder/sheet/job/menatarms/pikeman
 	raw_attribute_list = list(
@@ -66,7 +79,7 @@
 		STAT_ENDURANCE = 1,
 		STAT_CONSTITUTION = 1,
 		STAT_SPEED = 1,
-		/datum/attribute/skill/combat/polearms = 30,
+		/datum/attribute/skill/combat/polearms = 33,
 		/datum/attribute/skill/combat/swords = 20,
 		/datum/attribute/skill/combat/knives = 20,
 		/datum/attribute/skill/combat/axesmaces = 20,
@@ -98,9 +111,13 @@
 /datum/outfit/watchman/pikeman
 	name = "Pikeman Men-At-Arms"
 	armor = /obj/item/clothing/armor/chainmail/hauberk
+	shirt = /obj/item/clothing/shirt/tunic/colored/tunicprimary
 	beltr = /obj/item/weapon/sword/arming
 	backr = /obj/item/weapon/polearm/spear/billhook
 	backl = /obj/item/storage/backpack/satchel
+	backpack_contents = list(
+		/obj/item/weapon/knife/dagger/steel/special = 1
+	)
 	scabbards = list(/obj/item/weapon/scabbard/sword)
 
 /datum/attribute_holder/sheet/job/menatarms/axeman
@@ -111,7 +128,7 @@
 		STAT_SPEED = -1,
 		/datum/attribute/skill/combat/swords = 20,
 		/datum/attribute/skill/combat/knives = 20,
-		/datum/attribute/skill/combat/axesmaces = 30,
+		/datum/attribute/skill/combat/axesmaces = 33,
 		/datum/attribute/skill/combat/wrestling = 20,
 		/datum/attribute/skill/combat/unarmed = 30,
 		/datum/attribute/skill/misc/swimming = 20,
@@ -145,6 +162,9 @@
 	shirt = /obj/item/clothing/armor/gambeson/heavy
 	gloves = /obj/item/clothing/gloves/chain
 	backl = /obj/item/storage/backpack/satchel
+	backpack_contents = list(
+		/obj/item/weapon/knife/dagger/steel/special = 1
+	)
 	backr = /obj/item/weapon/greataxe/steel
 
 /datum/attribute_holder/sheet/job/menatarms/ranger
@@ -154,8 +174,8 @@
 		STAT_SPEED = 1,
 		/datum/attribute/skill/combat/axesmaces = 30,
 		/datum/attribute/skill/combat/knives = 20,
-		/datum/attribute/skill/combat/bows = 30,
-		/datum/attribute/skill/combat/crossbows = 30,
+		/datum/attribute/skill/combat/bows = 33,
+		/datum/attribute/skill/combat/crossbows = 33,
 		/datum/attribute/skill/combat/wrestling = 20,
 		/datum/attribute/skill/combat/unarmed = 20,
 		/datum/attribute/skill/misc/swimming = 20,
@@ -183,7 +203,12 @@
 /datum/outfit/watchman/ranger
 	name = "Archer Men-At-Arms"
 	armor = /obj/item/clothing/armor/leather/splint
+	shirt = /obj/item/clothing/shirt/tunic/colored/tunicprimary
 	beltr = /obj/item/weapon/mace/cudgel
+	backl = /obj/item/storage/backpack/satchel
+	backpack_contents = list(
+		/obj/item/weapon/knife/dagger/steel/special = 1
+	)
 
 /datum/job/advclass/menatarms/watchman_ranger/on_roundstart(mob/living/carbon/human/equipped_human, client/player_client)
 	. = ..()
@@ -202,8 +227,8 @@
 		STAT_STRENGTH = 2,
 		STAT_ENDURANCE = 1,
 		STAT_CONSTITUTION = 1,
-		/datum/attribute/skill/combat/swords = 30,
-		/datum/attribute/skill/combat/shields = 30,
+		/datum/attribute/skill/combat/swords = 33,
+		/datum/attribute/skill/combat/shields = 33,
 		/datum/attribute/skill/combat/knives = 20,
 		/datum/attribute/skill/combat/axesmaces = 20,
 		/datum/attribute/skill/combat/wrestling = 20,
@@ -234,7 +259,11 @@
 /datum/outfit/watchman/swordsman
 	name = "Swordsman Men-At-Arms"
 	armor = /obj/item/clothing/armor/chainmail/hauberk
+	shirt = /obj/item/clothing/shirt/tunic/colored/tunicprimary
 	beltr = /obj/item/weapon/sword/arming
 	backr = /obj/item/weapon/shield/heater
 	backl = /obj/item/storage/backpack/satchel
+	backpack_contents = list(
+		/obj/item/weapon/knife/dagger/steel/special = 1
+	)
 	scabbards = list(/obj/item/weapon/scabbard/sword)

@@ -5,16 +5,20 @@
 	raw_attribute_list = list(
 		STAT_STRENGTH = -1,
 		STAT_INTELLIGENCE = 4,
-		STAT_PERCEPTION = 1,
+		STAT_PERCEPTION = 2,
 		STAT_CONSTITUTION = -1,
-		/datum/attribute/skill/combat/wrestling = 10,
+		/datum/attribute/skill/combat/unarmed = 20,
+		/datum/attribute/skill/misc/swimming = 30,
+		/datum/attribute/skill/misc/athletics = 10,
+		/datum/attribute/skill/combat/wrestling = 20,
 		/datum/attribute/skill/craft/crafting = 20,
-		/datum/attribute/skill/combat/knives = 20,
+		/datum/attribute/skill/combat/knives = 30,
 		/datum/attribute/skill/misc/reading = 50,
 		/datum/attribute/skill/labor/mathematics = 30,
 		/datum/attribute/skill/misc/sewing = 30,
 		/datum/attribute/skill/misc/climbing = 20,
 		/datum/attribute/skill/misc/medicine = 50,
+		/datum/attribute/skill/craft/engineering = 20,
 		/datum/attribute/skill/craft/alchemy = 30,
 		/datum/attribute/skill/labor/farming = 30,
 	)
@@ -23,22 +27,28 @@
 	raw_attribute_list = list(
 		STAT_STRENGTH = -1,
 		STAT_INTELLIGENCE = 4,
-		STAT_PERCEPTION = 1,
+		STAT_PERCEPTION = 2,
 		STAT_CONSTITUTION = -1,
-		/datum/attribute/skill/combat/wrestling = 10,
+		/datum/attribute/skill/combat/unarmed = 20,
+		/datum/attribute/skill/misc/swimming = 30,
+		/datum/attribute/skill/misc/athletics = 10,
+		/datum/attribute/skill/combat/wrestling = 20,
 		/datum/attribute/skill/craft/crafting = 20,
-		/datum/attribute/skill/combat/knives = 20,
+		/datum/attribute/skill/combat/knives = 30,
 		/datum/attribute/skill/misc/reading = 50,
 		/datum/attribute/skill/labor/mathematics = 30,
 		/datum/attribute/skill/misc/sewing = 30,
 		/datum/attribute/skill/misc/climbing = 20,
 		/datum/attribute/skill/misc/medicine = 60,
+		/datum/attribute/skill/craft/engineering = 20,
 		/datum/attribute/skill/craft/alchemy = 30,
 		/datum/attribute/skill/labor/farming = 30,
 	)
 
 /datum/job/feldsher
 	title = JOB_FELDSHER
+	alt_titles = list("Surgeon", "Humourist", "Bachelor", "Doktor", "Crocus", "Medic")
+	alt_honorary = list("Dr")
 	tutorial = "You have seen countless wounds over your time. \
 	Stitched the sores of blades, sealed honey over the bubous of plague. \
 	A thousand deaths stolen from the Carriagemen, yet these people will still call you a charlatan. \
@@ -47,10 +57,9 @@
 	department_flag = SERFS
 	display_order = JDO_FELDSHER
 	job_flags = (JOB_ANNOUNCE_ARRIVAL | JOB_SHOW_IN_CREDITS | JOB_EQUIP_RANK | JOB_NEW_PLAYER_JOINABLE)
-	faction = FACTION_TOWN
+	factions = list(FACTION_TOWN)
 	total_positions = 1
 	spawn_positions = 1
-	bypass_lastclass = TRUE
 
 	trainable_skills = list(/datum/attribute/skill/misc/medicine = 0.1)
 	max_apprentices = 2
@@ -70,6 +79,8 @@
 
 	outfit = /datum/outfit/feldsher
 	give_bank_account = 100
+	knows_the_town = TRUE
+	known_by_the_town = TRUE
 	cmode_music = 'sound/music/cmode/nobility/combat_physician.ogg'
 
 	spells = list(

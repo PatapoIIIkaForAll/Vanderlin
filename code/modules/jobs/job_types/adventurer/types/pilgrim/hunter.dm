@@ -7,6 +7,8 @@
 		/datum/attribute/skill/combat/bows = 30,
 		/datum/attribute/skill/combat/crossbows = 20,
 		/datum/attribute/skill/combat/knives = 20,
+		/datum/attribute/skill/combat/wrestling = 10,
+		/datum/attribute/skill/combat/unarmed = 10,
 		/datum/attribute/skill/craft/cooking = 10,
 		/datum/attribute/skill/labor/butchering = 20,
 		/datum/attribute/skill/labor/taming = 30,
@@ -29,6 +31,8 @@
 		/datum/attribute/skill/combat/bows = 40,
 		/datum/attribute/skill/combat/crossbows = 20,
 		/datum/attribute/skill/combat/knives = 20,
+		/datum/attribute/skill/combat/wrestling = 10,
+		/datum/attribute/skill/combat/unarmed = 10,
 		/datum/attribute/skill/craft/cooking = 10,
 		/datum/attribute/skill/labor/butchering = 20,
 		/datum/attribute/skill/labor/taming = 30,
@@ -49,7 +53,7 @@
 				or the boons of Dendor for their meat to sell, or consume."
 	allowed_sexes = list(MALE, FEMALE)
 	outfit = /datum/outfit/pilgrim/hunter
-	category_tags = list(CTAG_PILGRIM)
+	category_tags = list(CTAG_PILGRIM, CTAG_VAMP_PILGRIM)
 	apprentice_name = "Hunter Apprentice"
 	cmode_music = 'sound/music/cmode/towner/CombatBeggar.ogg'
 

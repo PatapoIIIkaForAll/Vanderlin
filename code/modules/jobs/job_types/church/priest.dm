@@ -19,7 +19,7 @@
 
 /datum/attribute_holder/sheet/job/priest/old
 	raw_attribute_list = list(
-		 STAT_STRENGTH = 1,
+		STAT_STRENGTH = 1,
 		STAT_INTELLIGENCE = 2,
 		STAT_ENDURANCE = 2,
 		STAT_SPEED = 1,
@@ -45,6 +45,11 @@
 /datum/job/priest
 	title = JOB_PRIEST
 	f_title = JOB_PRIEST_FEM
+	alt_titles = list("Abbot", "Friar")
+
+	unique_alt_honororary = TRUE
+	alt_honorary = list("Father")
+	alt_honorary_female = list("Mother Superior")
 	tutorial = "You are a devoted follower of Astrata. \
 	The divine is all that matters in an immoral world. \
 	The Sun Queen and her pantheon rule over all, and you will preach their wisdom to Vanderlin. \
@@ -52,10 +57,9 @@
 	department_flag = CHURCHMEN
 	job_flags = (JOB_ANNOUNCE_ARRIVAL | JOB_SHOW_IN_CREDITS | JOB_EQUIP_RANK | JOB_NEW_PLAYER_JOINABLE)
 	display_order = JDO_PRIEST
-	faction = FACTION_TOWN
+	factions = list(FACTION_TOWN)
 	total_positions = 1
 	spawn_positions = 1
-	bypass_lastclass = TRUE
 	selection_color = "#c2a45d"
 	cmode_music = 'sound/music/cmode/church/CombatAstrata.ogg'
 	allowed_races = RACES_PLAYER_NONDISCRIMINATED
@@ -63,6 +67,7 @@
 	allowed_patrons = list(/datum/patron/divine/astrata)
 
 	outfit = /datum/outfit/priest
+	give_bank_account = 30
 	spells = list(
 		/datum/action/cooldown/spell/undirected/list_target/convert_role/church/templar,
 		/datum/action/cooldown/spell/undirected/list_target/convert_role/church/acolyte,
@@ -82,12 +87,11 @@
 
 	languages = list(/datum/language/celestial)
 	can_have_apprentices = FALSE
+	traits = list(TRAIT_VIRGIN, TRAIT_IDENTIFY_DEVIL_MARKS)
 
 /datum/job/priest/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
 	spawned.give_priest_verbs()
-
-	spawned.virginity = TRUE
 
 	var/holder = spawned.patron?.devotion_holder
 	if(holder)
@@ -123,7 +127,7 @@
 	f_title = "Ex-Priestess"
 	job_flags = (JOB_ANNOUNCE_ARRIVAL | JOB_EQUIP_RANK)
 	department_flag = CHURCHMEN
-	faction = FACTION_TOWN
+	factions = list(FACTION_TOWN)
 	total_positions = 0
 	spawn_positions = 0
 
@@ -132,7 +136,7 @@
 	f_title = "Vice Priestess"
 	job_flags = (JOB_ANNOUNCE_ARRIVAL | JOB_EQUIP_RANK)
 	department_flag = CHURCHMEN
-	faction = FACTION_TOWN
+	factions = list(FACTION_TOWN)
 	total_positions = 0
 	spawn_positions = 0
 
@@ -153,7 +157,7 @@
 			continue
 		if(!HU.head)
 			continue
-		if(!istype(HU.head, /obj/item/clothing/head/crown/serpcrown))
+		if(!istype(HU.head, /obj/item/clothing/head/crown/serpcrown) && !istype(HU.wear_mask, /obj/item/clothing/head/crown/serpcrown))
 			continue
 
 		coronated = HU

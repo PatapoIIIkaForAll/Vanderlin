@@ -99,10 +99,11 @@
 		to_chat(user, span_warning("[src] cannot be used to repair [I]!"))
 		return FALSE
 
+	var/list/armorlist = I.get_armor().get_rating_list()
 	var/armor_value = 0
 	var/skill_level = GET_MOB_SKILL_VALUE(user, I.sewrepair)
-	for(var/key in I.armor.getList())
-		armor_value += I.armor.getRating(key)
+	for(var/key in armorlist)
+		armor_value += armorlist[key]
 
 	if(!I.obj_broken && I.get_integrity() >= I.max_integrity && (I.max_integrity != initial(I.max_integrity)))
 		if(!I.salvage_result)
@@ -223,7 +224,7 @@
 	var/perception_mod = 1 - 0.5 * (GET_MOB_ATTRIBUTE_VALUE(doctor, STAT_PERCEPTION) - ATTRIBUTE_MIDDLING)/(ATTRIBUTE_MAX - SKILL_MIDDLING)
 	var/doctor_mod = 1 - 0.9 * (doctor_skill - SKILL_MIDDLING)/(SKILL_MAX - SKILL_MIDDLING)
 	// First try to fix arteries
-	if(affecting.get_cut() && affecting.is_artery_torn())
+	if(affecting.is_artery_torn())
 		var/time = 5 SECONDS
 		time *= perception_mod * doctor_mod
 		playsound(patient, 'sound/foley/sewflesh.ogg', 100, TRUE, -2)

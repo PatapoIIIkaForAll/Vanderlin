@@ -30,6 +30,8 @@
 
 	base_icon_state = "basic_book"
 	var/open = FALSE
+	/// Whether or not this is locked to its state.
+	var/can_open = TRUE
 	var/dat				//Actual page content
 	var/due_date = 0	//Game time in 1/10th seconds
 	var/author			//Who wrote the thing, can be changed by pen or PC. It is not automatically assigned
@@ -201,6 +203,8 @@
 	. = ..()
 	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
 		return
+	if(!can_open)
+		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 	if(!open)
 		slot_flags &= ~ITEM_SLOT_HIP
 		open = TRUE
@@ -646,10 +650,14 @@
 		return ITEM_INTERACT_BLOCKING
 
 	// Prompt user to populate manuscript fields
-	var/newtitle = dd_limittext(SANITIZE_HEAR_MESSAGE(input(user, "Enter the title of the manuscript:") as text|null), MAX_CHARTER_LEN)
-	var/newauthor = dd_limittext(SANITIZE_HEAR_MESSAGE(input(user, "Enter the author's name:") as text|null), MAX_CHARTER_LEN)
-	var/newcategory = input(user, "Select the category of the manuscript:") in list("Apocrypha & Grimoires", "Myths & Tales", "Legends & Accounts", "Thesis", "Eoratica")
-	var/newicon = book_icons[input(user, "Choose a book style", "Book Style") as anything in book_icons]
+
+	var/newtitle = SANITIZE_HEAR_MESSAGE(tgui_input_text(user, "Enter the title of the manuscript:", max_length = MAX_CHARTER_LEN))
+	var/newauthor = SANITIZE_HEAR_MESSAGE(tgui_input_text(user, "Enter the author's name:", max_length = MAX_CHARTER_LEN))
+	var/newcategory = tgui_input_list(user, "Select the category of the manuscript:", list("Apocrypha & Grimoires", "Myths & Tales", "Legends & Accounts", "Thesis", "Eoratica"))
+	var/selection = tgui_input_list(user, "Choose a book style", "Book Style", book_icons)
+	if(!selection)
+		return
+	var/newicon = book_icons[selection]
 
 	if(newtitle && newauthor && newcategory)
 		name = newtitle

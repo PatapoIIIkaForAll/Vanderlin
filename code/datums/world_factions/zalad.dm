@@ -124,6 +124,7 @@
 		// Narcotics/Trade goods
 		/datum/supply_pack/narcotics/sigs,
 		/datum/supply_pack/narcotics/zigbox,
+		/datum/supply_pack/narcotics/spider,
 		/datum/supply_pack/narcotics/soap
 	)
 	rare_pool = list(
@@ -150,7 +151,7 @@
 		/datum/supply_pack/weapons/iron/iassegai,
 		/datum/supply_pack/weapons/ranged/shortbow,
 		/datum/supply_pack/weapons/ranged/bow,
-		/datum/supply_pack/weapons/steel/atgervi,
+		/datum/supply_pack/weapons/steel/bearded,
 		/datum/supply_pack/weapons/ranged/crossbow,
 		/datum/supply_pack/weapons/ammo/quivers,
 		/datum/supply_pack/weapons/ammo/arrowquiver,

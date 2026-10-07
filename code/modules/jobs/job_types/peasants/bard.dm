@@ -3,8 +3,9 @@
 		STAT_PERCEPTION = 1,
 		STAT_SPEED = 2,
 		STAT_STRENGTH = -1,
-		/datum/attribute/skill/combat/knives = 10,
-		/datum/attribute/skill/combat/unarmed = 20,
+		/datum/attribute/skill/combat/knives = 20,
+		/datum/attribute/skill/combat/unarmed = 30,
+		/datum/attribute/skill/combat/wrestling = 10,
 		/datum/attribute/skill/craft/crafting = 10,
 		/datum/attribute/skill/misc/swimming = 20,
 		/datum/attribute/skill/misc/climbing = 20,
@@ -21,6 +22,7 @@
 
 /datum/job/bard
 	title = JOB_BARD
+	alt_titles = list("Carouser", "Piper", "Flutist", "Guitarist", "Fiddler", "Drummer")
 	tutorial = "Bards make up one of the largest populations of registered adventurers in Vanderlin, \
 	mostly because they are the last ones in a party to die. \
 	Their wish is to experience the greatest adventures of the age and write amazing songs \
@@ -28,10 +30,11 @@
 	department_flag = PEASANTS
 	display_order = JDO_BARD
 	job_flags = (JOB_ANNOUNCE_ARRIVAL | JOB_SHOW_IN_CREDITS | JOB_EQUIP_RANK | JOB_NEW_PLAYER_JOINABLE)
-	faction = FACTION_TOWN
+	factions = list(FACTION_TOWN)
 	total_positions = 4
 	spawn_positions = 4
-	bypass_lastclass = TRUE
+	knows_the_town = TRUE
+	known_by_the_town = TRUE
 
 	allowed_races = RACES_PLAYER_ALL
 	outfit = /datum/outfit/bard
@@ -77,7 +80,7 @@
 /datum/outfit/bard
 	name = JOB_BARD
 	head = /obj/item/clothing/head/bardhat
-	shoes = /obj/item/clothing/shoes/boots
+	shoes = /obj/item/clothing/shoes/boots/darkboots
 	pants = /obj/item/clothing/pants/tights/colored/random
 	shirt = /obj/item/clothing/shirt/tunic/noblecoat
 	belt = /obj/item/storage/belt/leather

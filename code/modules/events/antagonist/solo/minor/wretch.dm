@@ -10,7 +10,6 @@
 	roundstart = TRUE
 	antag_flag = ROLE_WRETCH
 	shared_occurence_type = SHARED_MINOR_THREAT
-	minor_roleset = TRUE
 
 	restricted_roles = list(
 		/datum/job/lord,
@@ -30,6 +29,7 @@
 		/datum/job/forestenforcer,
 		/datum/job/forestpreacher,
 		/datum/job/bogwitch,
+		/datum/job/admin,
 	)
 
 	base_antags = 1
@@ -44,11 +44,11 @@
 	preferred_events = list(
 		/datum/round_event_control/antagonist/solo/lich = 1,
 		/datum/round_event_control/antagonist/solo/aspirant = 1,
-		/datum/round_event_control/antagonist/solo/maniac = 1,
+		///datum/round_event_control/antagonist/solo/maniac = 1,
 		/datum/round_event_control/antagonist/solo/vampires_and_werewolves = 1,
 		/datum/round_event_control/antagonist/solo/vampires = 1,
 		/datum/round_event_control/antagonist/solo/werewolf = 1,
-		/datum/round_event_control/antagonist/solo/zizo_cult = 1
+		///datum/round_event_control/antagonist/solo/zizo_cult = 1
 	)
 	typepath = /datum/round_event/antagonist/solo/wretch
 

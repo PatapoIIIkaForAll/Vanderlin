@@ -7,17 +7,21 @@
 	department_flag = GARRISON
 	job_flags = (JOB_ANNOUNCE_ARRIVAL | JOB_SHOW_IN_CREDITS | JOB_EQUIP_RANK | JOB_NEW_PLAYER_JOINABLE)
 	display_order = JDO_GATEMASTER
-	faction = FACTION_TOWN
+	factions = list(FACTION_TOWN, SUB_FACTION_KEEP)
 	total_positions = 1
 	spawn_positions = 1
-	bypass_lastclass = TRUE
 
 	allowed_races = RACES_PLAYER_ALL
 
 	outfit = /datum/outfit/gatemaster
 	advclass_cat_rolls = list(CTAG_GATEMASTER = 20)
 	give_bank_account = 30
+	knows_the_town = TRUE
+	known_by_the_town = TRUE
+	jobs_i_always_know = KNOW_COURT_LIST
+	jobs_always_know_me = KNOW_COURT_AGENT_LIST
 	cmode_music = 'sound/music/cmode/garrison/CombatGatekeeper.ogg'
+	starting_wage = 30
 
 	job_bitflag = BITFLAG_GARRISON
 
@@ -44,7 +48,7 @@
 	shirt = /obj/item/clothing/armor/chainmail
 	belt = /obj/item/storage/belt/leather/black
 	pants = /obj/item/clothing/pants/trou/leather
-	shoes = /obj/item/clothing/shoes/boots
+	shoes = /obj/item/clothing/shoes/boots/darkboots
 
 /datum/outfit/gatemaster/post_equip(mob/living/carbon/human/H, visuals_only = FALSE)
 	. = ..()
@@ -55,6 +59,7 @@
 	inherit_parent_title = TRUE
 	exp_type = list(EXP_TYPE_GARRISON, EXP_TYPE_COMBAT)
 	exp_types_granted = list(EXP_TYPE_GARRISON, EXP_TYPE_COMBAT)
+	factions = list(FACTION_TOWN, SUB_FACTION_KEEP)
 
 /datum/attribute_holder/sheet/job/gatemaster/whip
 	raw_attribute_list = list(
@@ -63,7 +68,7 @@
 		STAT_ENDURANCE = 2,
 		STAT_PERCEPTION = -1,
 		/datum/attribute/skill/combat/axesmaces = 20,
-		/datum/attribute/skill/combat/whipsflails = 30,
+		/datum/attribute/skill/combat/whipsflails = 36,
 		/datum/attribute/skill/combat/shields = 30,
 		/datum/attribute/skill/combat/wrestling = 20,
 		/datum/attribute/skill/combat/unarmed = 30,
@@ -113,8 +118,8 @@
 		STAT_CONSTITUTION = 2,
 		STAT_SPEED = -1,
 		/datum/attribute/skill/combat/knives = 20,
-		/datum/attribute/skill/combat/axesmaces = 30,
-		/datum/attribute/skill/combat/shields = 30,
+		/datum/attribute/skill/combat/axesmaces = 36,
+		/datum/attribute/skill/combat/shields = 35,
 		/datum/attribute/skill/combat/wrestling = 20,
 		/datum/attribute/skill/combat/unarmed = 30,
 		/datum/attribute/skill/misc/swimming = 20,
@@ -160,8 +165,8 @@
 		STAT_ENDURANCE = 1,
 		/datum/attribute/skill/combat/axesmaces = 20,
 		/datum/attribute/skill/combat/knives = 20,
-		/datum/attribute/skill/combat/bows = 30,
-		/datum/attribute/skill/combat/crossbows = 30,
+		/datum/attribute/skill/combat/bows = 36,
+		/datum/attribute/skill/combat/crossbows = 36,
 		/datum/attribute/skill/combat/wrestling = 20,
 		/datum/attribute/skill/combat/unarmed = 30,
 		/datum/attribute/skill/misc/swimming = 20,

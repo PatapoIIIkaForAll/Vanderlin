@@ -131,7 +131,7 @@
 	desc = "Those who wear, thy should beware, for those who do; never come back as who they once were again."
 	allowed_race = ALL_RACES_LIST
 	body_parts_covered = ARMS|CHEST
-	armor = ARMOR_MAILLE_GOOD
+	armor_type = /datum/armor/maille/good
 
 /obj/item/clothing/cloak/half/colored
 	misc_flags = CRAFTING_TEST_EXCLUDE
@@ -141,6 +141,9 @@
 
 /obj/item/clothing/cloak/half/colored/red
 	color = CLOTHING_BLOOD_RED
+
+/obj/item/clothing/cloak/half/colored/blood
+	color = COLOR_BLOOD_MAGIC
 
 /obj/item/clothing/cloak/half/vet
 	name = "town watch cloak"
@@ -277,6 +280,7 @@
 	salvage_result = /obj/item/natural/hide/cured
 	dyeable = TRUE
 	sellprice = 0 // See above comment
+	examine_highlight_type = /datum/examine_highlight/heresy_suspicious/graggar
 
 /obj/item/clothing/cloak/graggar/heavy
 	name = "vicious halfcloak"
@@ -415,7 +419,7 @@
 	nodismemsleeves = TRUE
 	detail_tag = null
 
-/obj/item/clothing/cloak/kazengun
+/obj/item/clothing/cloak/blackmeadow
 	name = "jinbaori"
 	desc = "A simple kind of Blackmeadow surcoat, worn here in the distant battlefields of Azuria to differentiate friend from foe."
 	icon_state = "kazenguncoat"
@@ -457,3 +461,16 @@
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/crusader.dmi'
 	sleeved = 'icons/roguetown/clothing/special/onmob/crusader.dmi'
 	has_storage = TRUE
+
+/obj/item/clothing/cloak/rosa
+	name = "regal cloak"
+	desc = "A finely crafted cloak from Wintermare, typically worn by their nobility."
+	icon_state = "rosacloak7"
+	alternate_worn_layer = CLOAK_BEHIND_LAYER
+	icon = 'icons/roguetown/clothing/special/rosewood.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/rosewood.dmi'
+	sleeved = 'icons/roguetown/clothing/special/onmob/rosewood.dmi'
+
+/obj/item/clothing/cloak/rosa/two
+	name = "courtly cloak"
+	icon_state = "rosacloak8"
